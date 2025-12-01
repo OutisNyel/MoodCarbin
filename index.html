@@ -44,7 +44,7 @@
             letter-spacing: 0.5px;
         }
         
-        .emotion-btn {
+        .emotion-btn, .save-btn {
             display: block;
             width: 100%;
             padding: 12px 20px;
@@ -61,13 +61,13 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .emotion-btn:hover {
+        .emotion-btn:hover, .save-btn:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
-        .emotion-btn.active {
+        .emotion-btn.active, .save-btn:active {
             background: rgba(255, 255, 255, 0.25);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
@@ -112,7 +112,7 @@
             <button class="emotion-btn" data-emotion="happy">😊😊 快乐</button>
             <button class="emotion-btn" data-emotion="sad">😢😢 悲伤</button>
             <button class="emotion-btn" data-emotion="angry">😠😠 愤怒</button>
-            <button class="emotion-btn" onclick="saveImage()">保存图片</button>
+            <button class="save-btn" onclick="saveImage()">保存图片</button>
         </div>
         
         <div class="info" style="display: none;" id="info">
