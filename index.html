@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情绪小屋</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        #canvas-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(25, 25, 45, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            color: #e6e6ff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            min-width: 200px;
+        }
+        
+        .controls h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .emotion-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #e6e6ff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .emotion-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .emotion-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(25, 25, 45, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 15px;
+            color: #e6e6ff;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #e6e6ff;
+            font-size: 24px;
+            z-index: 200;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <div class="loading" id="loading">加载中...</div>
+        
+        <div class="controls" style="display: none;" id="controls">
+            <h3>选择情绪</h3>
+            <button class="emotion-btn" data-emotion="happy">😊😊 快乐</button>
+            <button class="emotion-btn" data-emotion="sad">😢😢 悲伤</button>
+            <button class="emotion-btn" data-emotion="angry">😠😠 愤怒</button>
+            <button class="emotion-btn" onclick="saveImage()">保存图片</button>
+        </div>
+        
+        <div class="info" style="display: none;" id="info">
+            使用鼠标左键旋转视角，滚轮缩放 <br>
+            当前情绪：<span id="cur-emotion">正常</span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script src="main.js"></script>
+    <script src="anger.js"></script>
+    <script src="happy.js"></script>
+    <script src="sad.js"></script>
+</body>
+</html>
